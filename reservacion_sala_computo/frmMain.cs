@@ -15,7 +15,7 @@ namespace reservacion_sala_computo
         public frmMain()
         {
             InitializeComponent();
-            //Hola desde Angus At Home :)
+            //Ahora si desde angus
         }
 
     }
