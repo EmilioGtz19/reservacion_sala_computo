@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
+
 
 namespace reservacion_sala_computo
 {
@@ -26,6 +28,7 @@ namespace reservacion_sala_computo
         private void btnSave_Click(object sender, EventArgs e)
         {
             error = "";
+            validate = true;
             string career;
             string computer;
             string name = txtName.Text;
@@ -86,6 +89,22 @@ namespace reservacion_sala_computo
             if (validate)
             {
                 MessageBox.Show("Registro completado", "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //intento de registro en excel
+                Excel.Application appExcel = new Excel.Application();
+                if (appExcel != null)
+                {
+                    Excel.Workbook wb = appExcel.Workbooks.Add();
+                    Excel.Worksheet ws = (Excel.Worksheet)wb.Sheets.Add();
+
+                    ws.Cells[1, 1] = name;
+                    ws.Cells[1, 2] = number;
+
+                    appExcel.ActiveWorkbook.SaveAs(@"C:\Users\j-emi\OneDrive\Escritorio\ejemplo.xls", Excel.XlFileFormat.xlWorkbookNormal);
+
+                    wb.Close();
+                    appExcel.Quit();
+                }
+
             }
             else
             {
