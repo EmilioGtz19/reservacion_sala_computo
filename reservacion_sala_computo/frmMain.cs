@@ -15,8 +15,30 @@ namespace reservacion_sala_computo
         public frmMain()
         {
             InitializeComponent();
-            //Ahora si desde angus
         }
 
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+
+            //abrir detalles de reservación
+            FrmDetail frmDetail = new FrmDetail();
+
+            frmDetail.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+            //guardar reservación
+
+
+            MessageBox.Show("Reservación hecha con éxito", "Reservación finalizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
     }
 }
