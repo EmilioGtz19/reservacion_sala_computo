@@ -8,8 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
-
+using reservacion_sala_computo.Model;
+using reservacion_sala_computo.Logic;
+using reservacion_sala_computo.Connection;
 
 namespace reservacion_sala_computo
 {
@@ -29,12 +30,15 @@ namespace reservacion_sala_computo
         {
             error = "";
             validate = true;
-            string career;
-            string computer;
+            int career;
+            int computer;
             string name = txtName.Text;
             string number = txtNumber.Text;
             string hourIn = dtpIn.Value.ToString("HH:mm");
             string hourOut = dtpOut.Value.ToString("HH:mm");
+            DateTime today = DateTime.Today;
+            Reservation reservation = new Reservation();
+
 
             if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
             {
@@ -55,7 +59,9 @@ namespace reservacion_sala_computo
             }
             else
             {
-                career = cbType.SelectedItem.ToString();
+                career = int.Parse(cbType.SelectedIndex.ToString()) + 1;
+                reservation.id_career = career;
+
             }
 
             if (cbComputers.SelectedIndex == -1)
@@ -65,10 +71,12 @@ namespace reservacion_sala_computo
             }
             else
             {
-                computer = cbComputers.SelectedItem.ToString();
+                computer = int.Parse(cbComputers.SelectedIndex.ToString()) + 1;
+                reservation.id_computer = computer;
+
             }
 
-            if(DateTime.Parse(hourIn) < DateTime.Parse("08:00"))
+            if (DateTime.Parse(hourIn) < DateTime.Parse("08:00"))
             {
                 validate = false;
                 error += "Seleccione hora de entrada valida \n";
@@ -89,21 +97,15 @@ namespace reservacion_sala_computo
             if (validate)
             {
                 MessageBox.Show("Registro completado", "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //intento de registro en excel
-                Excel.Application appExcel = new Excel.Application();
-                if (appExcel != null)
-                {
-                    Excel.Workbook wb = appExcel.Workbooks.Add();
-                    Excel.Worksheet ws = (Excel.Worksheet)wb.Sheets.Add();
 
-                    ws.Cells[1, 1] = name;
-                    ws.Cells[1, 2] = number;
+                reservation.student_number = int.Parse(number);
+                reservation.student_name = name;
+                reservation.day = today.ToString("dd/MM/yyyy");
+                reservation.hour_in = hourIn;
+                reservation.hour_out = hourOut;
 
-                    appExcel.ActiveWorkbook.SaveAs(@"C:\Users\j-emi\OneDrive\Escritorio\ejemplo.xls", Excel.XlFileFormat.xlWorkbookNormal);
+                bool res = ConnectionDB.Instance.saveReservation(reservation);
 
-                    wb.Close();
-                    appExcel.Quit();
-                }
 
             }
             else
@@ -115,29 +117,10 @@ namespace reservacion_sala_computo
 
         private void loadInfo()
         {
-            StreamReader file;
-            string path = @" D:\Proyectos\carreras.txt";
-            string line = "";
 
-            file = new StreamReader(path);
-            {
-                while ((line = file.ReadLine()) != null)
-                {
-                    cbType.Items.Add(line);
-                }
+            cbType.Items.AddRange(ConnectionDB.Instance.getCareer());
+            cbComputers.Items.AddRange(ConnectionDB.Instance.getComputer());
 
-            }
-
-            path = @" D:\Proyectos\computadoras.txt";
-
-            file = new StreamReader(path);
-            {
-                while ((line = file.ReadLine()) != null)
-                {
-                    cbComputers.Items.Add(line);
-                }
-
-            }
 
         }
 
@@ -145,6 +128,7 @@ namespace reservacion_sala_computo
         {
             FrmDetail frm = new FrmDetail();
             frm.ShowDialog();
+
         }
 
         private void btnExit_Click(object sender, EventArgs e)
