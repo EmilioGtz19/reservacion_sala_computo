@@ -1,4 +1,5 @@
-﻿using System;
+﻿using reservacion_sala_computo.Connection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace reservacion_sala_computo
         public FrmDetail()
         {
             InitializeComponent();
+            loadInfoDtl();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -30,6 +32,11 @@ namespace reservacion_sala_computo
         private void btnEdit_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void loadInfoDtl()
+        {
+            cbCompuDt.Items.AddRange(ConnectionDB.Instance.getComputer());
         }
     }
 }

@@ -96,7 +96,7 @@ namespace reservacion_sala_computo
 
             if (validate)
             {
-                MessageBox.Show("Registro completado", "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
                 reservation.student_number = int.Parse(number);
                 reservation.student_name = name;
@@ -105,6 +105,17 @@ namespace reservacion_sala_computo
                 reservation.hour_out = hourOut;
 
                 bool res = ConnectionDB.Instance.saveReservation(reservation);
+
+                if (res)
+                {
+                    MessageBox.Show("Registro completado", "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
+                else
+                {
+                    MessageBox.Show("Error al guardar en la base de datos", "Error base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
 
 
             }

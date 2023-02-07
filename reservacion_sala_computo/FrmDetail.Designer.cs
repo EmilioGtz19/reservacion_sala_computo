@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("chagi");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("emilio");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("rafa 7:00 am - 8:00am");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("chagi");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("emilio");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("rafa 7:00 am - 8:00am");
             this.lblComputer = new System.Windows.Forms.Label();
             this.cbCompuDt = new System.Windows.Forms.ComboBox();
             this.lvReservations = new System.Windows.Forms.ListView();
@@ -53,6 +53,7 @@
             // 
             // cbCompuDt
             // 
+            this.cbCompuDt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCompuDt.FormattingEnabled = true;
             this.cbCompuDt.Location = new System.Drawing.Point(377, 22);
             this.cbCompuDt.Name = "cbCompuDt";
@@ -63,9 +64,9 @@
             // 
             this.lvReservations.HideSelection = false;
             this.lvReservations.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem13,
-            listViewItem14,
-            listViewItem15});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3});
             this.lvReservations.Location = new System.Drawing.Point(65, 101);
             this.lvReservations.Name = "lvReservations";
             this.lvReservations.Size = new System.Drawing.Size(264, 251);
