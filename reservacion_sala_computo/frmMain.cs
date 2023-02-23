@@ -52,14 +52,14 @@ namespace reservacion_sala_computo
                 error += "Favor de llenar el campo matricula \n";
             }
 
-            if (cbType.SelectedIndex == -1)
+            if (cbCareers.SelectedIndex == -1)
             {
                 validate = false;
                 error += "Favor de llenar el campo carrera \n";
             }
             else
             {
-                career = int.Parse(cbType.SelectedIndex.ToString()) + 1;
+                career = int.Parse(cbCareers.SelectedIndex.ToString()) + 1;
                 reservation.id_career = career;
 
             }
@@ -104,7 +104,7 @@ namespace reservacion_sala_computo
                 reservation.hour_in = hourIn;
                 reservation.hour_out = hourOut;
 
-                bool res = ConnectionDB.Instance.saveReservation(reservation);
+                bool res = new ReservationLogic().SaveReservation(reservation);
 
                 if (res)
                 {
@@ -128,10 +128,19 @@ namespace reservacion_sala_computo
 
         private void loadInfo()
         {
+            List<Computer> computers = new ComputerLogic().GetComputers();
+            List<Career> careers = new CareerLogic().GetCareer();
 
-            cbType.Items.AddRange(ConnectionDB.Instance.getCareer());
-            cbComputers.Items.AddRange(ConnectionDB.Instance.getComputer());
+           foreach(Computer computer in computers)
+            {
+                cbComputers.Items.Add(computer.computer_number);
+            }
 
+           
+           foreach(Career career in careers)
+            {
+                cbCareers.Items.Add(career.career_name);
+            }
 
         }
 

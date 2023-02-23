@@ -13,13 +13,15 @@ namespace reservacion_sala_computo.Connection
 {
     public class ConnectionDB
     {
-        private static string conn = "Data Source = C:/Users/Tyler/Desktop/reservaciones/reservacion_sala_computo/reservacion_sala_computo/DB_SALA_COMPUTO.db";
-
+        //private static string conn = ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString;
         private static ConnectionDB _instance = null;
+        private SQLiteConnection conn = null;
 
         //constructor
-        public ConnectionDB()
+        private ConnectionDB()
         {
+            string connString = ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString;
+            conn = new SQLiteConnection(connString);
         }
 
         public static ConnectionDB Instance
@@ -32,39 +34,15 @@ namespace reservacion_sala_computo.Connection
                 }
                 return _instance;
             }
-            
+        }
+
+        public SQLiteConnection GetConnection()
+        {
+            return conn;
         }
 
 
         //Se guarda en la base de datos, debe ir en ReservationLogic
-        public bool saveReservation(Reservation reservation)
-        {
-            bool res = true;
-            using (SQLiteConnection connection = new SQLiteConnection(conn))
-            {
-                connection.Open();
-                string query = "INSERT INTO reservation(student_number, student_name, note, day, hour_in, hour_out, id_career, id_computer) values (@student_number, @student_name, @note, @day, @hour_in, @hour_out, @id_career, @id_computer)";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.Parameters.Add(new SQLiteParameter("@id_reservation", reservation.id_reservation));
-                cmd.Parameters.Add(new SQLiteParameter("@student_number", reservation.student_number));
-                cmd.Parameters.Add(new SQLiteParameter("@student_name", reservation.student_name));
-                cmd.Parameters.Add(new SQLiteParameter("@note", reservation.note));
-                cmd.Parameters.Add(new SQLiteParameter("@day", reservation.day));
-                cmd.Parameters.Add(new SQLiteParameter("@hour_in", reservation.hour_in));
-                cmd.Parameters.Add(new SQLiteParameter("@hour_out", reservation.hour_out));
-                cmd.Parameters.Add(new SQLiteParameter("@id_career", reservation.id_career));
-                cmd.Parameters.Add(new SQLiteParameter("@id_computer", reservation.id_computer));
-                cmd.CommandType = System.Data.CommandType.Text;
-
-                if (cmd.ExecuteNonQuery() < 1)
-                {
-                    res = false;
-                }
-            }
-
-            return res;
-        }
-
         public List<Reservation> getReservations()
         {
             List<Reservation> reservationList = new List<Reservation>();
@@ -95,72 +73,11 @@ namespace reservacion_sala_computo.Connection
                         });
                     }
                 }
-                
             }
 
             return reservationList;
 
         }
-
-        public object[] getCareer()
-        {
-
-            using (SQLiteConnection connection = new SQLiteConnection(conn))
-            {
-                object[] career = new object[6];
-
-                connection.Open();
-                string query = "SELECT career_name FROM career";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.CommandType = System.Data.CommandType.Text;
-
-                using (SQLiteDataReader reader = cmd.ExecuteReader())
-                {
-                    int i = 0;
-
-                    while(reader.Read())
-                    {
-                        career[i] = reader["career_name"].ToString();
-                        i++;
-                    }
-
-                }
-
-                return career;
-
-            }
-        }
-
-        public object[] getComputer()
-        {
-
-            using (SQLiteConnection connection = new SQLiteConnection(conn))
-            {
-                object[] computer = new object[10];
-
-                connection.Open();
-                string query = "SELECT computer_number FROM computer";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.CommandType = System.Data.CommandType.Text;
-
-                using (SQLiteDataReader reader = cmd.ExecuteReader())
-                {
-                    int i = 0;
-
-                    while (reader.Read())
-                    {
-                        computer[i] = reader["computer_number"].ToString();
-                        i++;
-                    }
-
-                }
-
-                return computer;
-
-            }
-        }
-
-
 
     }
 }

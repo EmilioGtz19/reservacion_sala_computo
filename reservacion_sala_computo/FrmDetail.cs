@@ -36,7 +36,7 @@ namespace reservacion_sala_computo
 
         private void loadInfoDtl()
         {
-            cbCompuDt.Items.AddRange(ConnectionDB.Instance.getComputer());
+            //cbCompuDt.Items.AddRange(ConnectionDB.Instance.getComputer());
         }
     }
 }
