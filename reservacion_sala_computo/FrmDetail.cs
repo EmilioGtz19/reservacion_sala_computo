@@ -1,4 +1,6 @@
 ﻿using reservacion_sala_computo.Connection;
+using reservacion_sala_computo.Logic;
+using reservacion_sala_computo.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +18,7 @@ namespace reservacion_sala_computo
         public FrmDetail()
         {
             InitializeComponent();
-            loadInfoDtl();
+            loadInfo();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -34,9 +36,20 @@ namespace reservacion_sala_computo
 
         }
 
-        private void loadInfoDtl()
+        private void loadInfo()
         {
-            //cbCompuDt.Items.AddRange(ConnectionDB.Instance.getComputer());
+            List<ReservationList> reservations = new ReservationLogic().GetReservations();
+
+            dgvReservations.DataSource = reservations;
+
+            dgvReservations.Columns["id_reservation"].Visible = false;
+            dgvReservations.Columns["student_number"].HeaderText = "Matrícula";
+            dgvReservations.Columns["student_name"].HeaderText = "Nombre";
+            dgvReservations.Columns["career_name"].HeaderText = "Carrera";
+            dgvReservations.Columns["computer_number"].HeaderText = "Computadora";
+            dgvReservations.Columns["day"].HeaderText = "Fecha";
+            dgvReservations.Columns["hour_in"].HeaderText = "Hora de entrada";
+            dgvReservations.Columns["hour_out"].HeaderText = "Hora de salida";
         }
     }
 }

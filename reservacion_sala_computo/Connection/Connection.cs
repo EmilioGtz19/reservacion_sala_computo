@@ -40,43 +40,5 @@ namespace reservacion_sala_computo.Connection
             return conn;
         }
 
-
-        //Se guarda en la base de datos, debe ir en ReservationLogic
-        public List<Reservation> getReservations()
-        {
-            List<Reservation> reservationList = new List<Reservation>();
-
-            using (SQLiteConnection connection = new SQLiteConnection(conn))
-            {
-                connection.Open();
-                string query = "SELECT * FROM reservation";
-                SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.CommandType = System.Data.CommandType.Text;
-
-                using(SQLiteDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        reservationList.Add(new Reservation()
-                        {
-                            //todos los datos
-                            id_reservation = int.Parse(reader["id_reservation"].ToString()),
-                            student_number = int.Parse(reader["student_number"].ToString()),
-                            student_name = reader["student_name"].ToString(),
-                            note = reader["note"].ToString(),
-                            // error ->>>>> day = reader["day"].ToString(),
-                            hour_in = reader["hour_in"].ToString(),
-                            hour_out = reader["hour_out"].ToString(),
-                            id_career = int.Parse(reader["id_career"].ToString()),
-                            id_computer = int.Parse(reader["id_computer"].ToString())
-                        });
-                    }
-                }
-            }
-
-            return reservationList;
-
-        }
-
     }
 }

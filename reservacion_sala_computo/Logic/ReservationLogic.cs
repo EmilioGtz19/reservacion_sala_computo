@@ -51,5 +51,53 @@ namespace reservacion_sala_computo.Logic
             return res;
         }
 
+     
+        public List<ReservationList> GetReservations()
+        {
+            List<ReservationList> reservationList = new List<ReservationList>();
+
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+                string query = "SELECT id_reservation," +
+                    "student_number, " +
+                    "student_name, " +
+                    "career_name, " +
+                    "computer_number," +
+                    "day, " +
+                    "hour_in, " +
+                    "hour_out " +
+                    "FROM reservation " +
+                    "INNER JOIN career ON career.id_career = reservation.id_career " +
+                    "INNER JOIN computer ON computer.id_computer = reservation.id_computer";
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        DateTime hour_in_ = reader.GetDateTime(reader.GetOrdinal("hour_in"));
+                        DateTime hour_out_ = reader.GetDateTime(reader.GetOrdinal("hour_out"));
+
+                        reservationList.Add(new ReservationList()
+                        {
+                            id_reservation = reader.GetInt32(reader.GetOrdinal("id_reservation")),
+                            student_number = reader.GetInt32(reader.GetOrdinal("student_number")),
+                            student_name = reader.GetString(reader.GetOrdinal("student_name")),
+                            career_name = reader.GetString(reader.GetOrdinal("career_name")),
+                            computer_number = reader.GetInt32(reader.GetOrdinal("computer_number")),
+                            day = reader.GetString(reader.GetOrdinal("day")),
+                            hour_in = hour_in_.ToString("HH:mm"),
+                            hour_out = hour_out_.ToString("HH:mm")
+                        });
+                    }
+                }
+            }
+
+            return reservationList;
+
+        }
+
     }
 }

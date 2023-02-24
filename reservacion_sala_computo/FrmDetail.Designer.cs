@@ -28,75 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("chagi");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("emilio");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("rafa 7:00 am - 8:00am");
-            this.lblComputer = new System.Windows.Forms.Label();
-            this.cbCompuDt = new System.Windows.Forms.ComboBox();
-            this.lvReservations = new System.Windows.Forms.ListView();
-            this.lvInfo = new System.Windows.Forms.ListView();
-            this.lblReservationDt = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
-            this.lblInfoDt = new System.Windows.Forms.Label();
+            this.dgvReservations = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblTitleDate = new System.Windows.Forms.Label();
+            this.lblTitleComputer = new System.Windows.Forms.Label();
+            this.lblTitleCareer = new System.Windows.Forms.Label();
+            this.lblTitleNumber = new System.Windows.Forms.Label();
+            this.lblTitleName = new System.Windows.Forms.Label();
+            this.lblTitleHourIn = new System.Windows.Forms.Label();
+            this.lblTitleHourOut = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservations)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblComputer
-            // 
-            this.lblComputer.AutoSize = true;
-            this.lblComputer.Location = new System.Drawing.Point(301, 25);
-            this.lblComputer.Name = "lblComputer";
-            this.lblComputer.Size = new System.Drawing.Size(70, 13);
-            this.lblComputer.TabIndex = 0;
-            this.lblComputer.Text = "Computadora";
-            // 
-            // cbCompuDt
-            // 
-            this.cbCompuDt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCompuDt.FormattingEnabled = true;
-            this.cbCompuDt.Location = new System.Drawing.Point(377, 22);
-            this.cbCompuDt.Name = "cbCompuDt";
-            this.cbCompuDt.Size = new System.Drawing.Size(67, 21);
-            this.cbCompuDt.TabIndex = 1;
-            // 
-            // lvReservations
-            // 
-            this.lvReservations.HideSelection = false;
-            this.lvReservations.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
-            this.lvReservations.Location = new System.Drawing.Point(65, 101);
-            this.lvReservations.Name = "lvReservations";
-            this.lvReservations.Size = new System.Drawing.Size(264, 251);
-            this.lvReservations.TabIndex = 3;
-            this.lvReservations.UseCompatibleStateImageBehavior = false;
-            this.lvReservations.View = System.Windows.Forms.View.List;
-            // 
-            // lvInfo
-            // 
-            this.lvInfo.HideSelection = false;
-            this.lvInfo.Location = new System.Drawing.Point(467, 101);
-            this.lvInfo.Name = "lvInfo";
-            this.lvInfo.Size = new System.Drawing.Size(264, 251);
-            this.lvInfo.TabIndex = 4;
-            this.lvInfo.UseCompatibleStateImageBehavior = false;
-            // 
-            // lblReservationDt
-            // 
-            this.lblReservationDt.AutoSize = true;
-            this.lblReservationDt.Location = new System.Drawing.Point(62, 73);
-            this.lblReservationDt.Name = "lblReservationDt";
-            this.lblReservationDt.Size = new System.Drawing.Size(169, 13);
-            this.lblReservationDt.TabIndex = 5;
-            this.lblReservationDt.Text = "Reservaciones de la computadora";
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(123, 370);
+            this.btnEdit.Location = new System.Drawing.Point(7, 324);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(143, 23);
+            this.btnEdit.Size = new System.Drawing.Size(136, 28);
             this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Editar reservación";
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -104,9 +58,10 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(123, 399);
+            this.btnDelete.Location = new System.Drawing.Point(263, 324);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(143, 23);
+            this.btnDelete.Size = new System.Drawing.Size(136, 28);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -114,54 +69,149 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(695, 415);
+            this.btnBack.Location = new System.Drawing.Point(1064, 513);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(93, 23);
+            this.btnBack.Size = new System.Drawing.Size(124, 28);
             this.btnBack.TabIndex = 8;
             this.btnBack.Text = "Volver";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // lblInfoDt
+            // dgvReservations
             // 
-            this.lblInfoDt.AutoSize = true;
-            this.lblInfoDt.Location = new System.Drawing.Point(464, 73);
-            this.lblInfoDt.Name = "lblInfoDt";
-            this.lblInfoDt.Size = new System.Drawing.Size(62, 13);
-            this.lblInfoDt.TabIndex = 9;
-            this.lblInfoDt.Text = "Información";
+            this.dgvReservations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReservations.Location = new System.Drawing.Point(445, 57);
+            this.dgvReservations.Name = "dgvReservations";
+            this.dgvReservations.ReadOnly = true;
+            this.dgvReservations.RowHeadersWidth = 51;
+            this.dgvReservations.RowTemplate.Height = 24;
+            this.dgvReservations.Size = new System.Drawing.Size(743, 349);
+            this.dgvReservations.TabIndex = 9;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(442, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 16);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Reservaciones";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblTitleHourOut);
+            this.groupBox1.Controls.Add(this.lblTitleHourIn);
+            this.groupBox1.Controls.Add(this.lblTitleDate);
+            this.groupBox1.Controls.Add(this.lblTitleComputer);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.lblTitleCareer);
+            this.groupBox1.Controls.Add(this.btnEdit);
+            this.groupBox1.Controls.Add(this.lblTitleNumber);
+            this.groupBox1.Controls.Add(this.lblTitleName);
+            this.groupBox1.Location = new System.Drawing.Point(13, 28);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(406, 378);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Detalle de reservación:";
+            // 
+            // lblTitleDate
+            // 
+            this.lblTitleDate.AutoSize = true;
+            this.lblTitleDate.Location = new System.Drawing.Point(71, 186);
+            this.lblTitleDate.Name = "lblTitleDate";
+            this.lblTitleDate.Size = new System.Drawing.Size(48, 16);
+            this.lblTitleDate.TabIndex = 4;
+            this.lblTitleDate.Text = "Fecha:";
+            // 
+            // lblTitleComputer
+            // 
+            this.lblTitleComputer.AutoSize = true;
+            this.lblTitleComputer.Location = new System.Drawing.Point(27, 154);
+            this.lblTitleComputer.Name = "lblTitleComputer";
+            this.lblTitleComputer.Size = new System.Drawing.Size(92, 16);
+            this.lblTitleComputer.TabIndex = 3;
+            this.lblTitleComputer.Text = "Computadora:";
+            // 
+            // lblTitleCareer
+            // 
+            this.lblTitleCareer.AutoSize = true;
+            this.lblTitleCareer.Location = new System.Drawing.Point(64, 121);
+            this.lblTitleCareer.Name = "lblTitleCareer";
+            this.lblTitleCareer.Size = new System.Drawing.Size(55, 16);
+            this.lblTitleCareer.TabIndex = 2;
+            this.lblTitleCareer.Text = "Carrera:";
+            // 
+            // lblTitleNumber
+            // 
+            this.lblTitleNumber.AutoSize = true;
+            this.lblTitleNumber.Location = new System.Drawing.Point(55, 86);
+            this.lblTitleNumber.Name = "lblTitleNumber";
+            this.lblTitleNumber.Size = new System.Drawing.Size(64, 16);
+            this.lblTitleNumber.TabIndex = 1;
+            this.lblTitleNumber.Text = "Matrícula:";
+            // 
+            // lblTitleName
+            // 
+            this.lblTitleName.AutoSize = true;
+            this.lblTitleName.Location = new System.Drawing.Point(60, 56);
+            this.lblTitleName.Name = "lblTitleName";
+            this.lblTitleName.Size = new System.Drawing.Size(59, 16);
+            this.lblTitleName.TabIndex = 0;
+            this.lblTitleName.Text = "Nombre:";
+            // 
+            // lblTitleHourIn
+            // 
+            this.lblTitleHourIn.AutoSize = true;
+            this.lblTitleHourIn.Location = new System.Drawing.Point(11, 220);
+            this.lblTitleHourIn.Name = "lblTitleHourIn";
+            this.lblTitleHourIn.Size = new System.Drawing.Size(108, 16);
+            this.lblTitleHourIn.TabIndex = 5;
+            this.lblTitleHourIn.Text = "Hora de entrada:";
+            // 
+            // lblTitleHourOut
+            // 
+            this.lblTitleHourOut.AutoSize = true;
+            this.lblTitleHourOut.Location = new System.Drawing.Point(20, 258);
+            this.lblTitleHourOut.Name = "lblTitleHourOut";
+            this.lblTitleHourOut.Size = new System.Drawing.Size(99, 16);
+            this.lblTitleHourOut.TabIndex = 6;
+            this.lblTitleHourOut.Text = "Hora de salida:";
             // 
             // FrmDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblInfoDt);
+            this.ClientSize = new System.Drawing.Size(1200, 554);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dgvReservations);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.lblReservationDt);
-            this.Controls.Add(this.lvInfo);
-            this.Controls.Add(this.lvReservations);
-            this.Controls.Add(this.cbCompuDt);
-            this.Controls.Add(this.lblComputer);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDetail";
             this.Text = "Detalles de reservación";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservations)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblComputer;
-        private System.Windows.Forms.ComboBox cbCompuDt;
-        private System.Windows.Forms.ListView lvReservations;
-        private System.Windows.Forms.ListView lvInfo;
-        private System.Windows.Forms.Label lblReservationDt;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Label lblInfoDt;
+        private System.Windows.Forms.DataGridView dgvReservations;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblTitleCareer;
+        private System.Windows.Forms.Label lblTitleNumber;
+        private System.Windows.Forms.Label lblTitleName;
+        private System.Windows.Forms.Label lblTitleDate;
+        private System.Windows.Forms.Label lblTitleComputer;
+        private System.Windows.Forms.Label lblTitleHourOut;
+        private System.Windows.Forms.Label lblTitleHourIn;
     }
 }
