@@ -13,7 +13,6 @@ namespace reservacion_sala_computo.Connection
 {
     public class ConnectionDB
     {
-        //private static string conn = ConfigurationManager.ConnectionStrings["SQLite"].ConnectionString;
         private static ConnectionDB _instance = null;
         private SQLiteConnection conn = null;
 

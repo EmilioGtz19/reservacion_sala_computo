@@ -43,7 +43,7 @@ namespace reservacion_sala_computo.Logic
                     cmd.Parameters.Add(new SQLiteParameter("@id_computer", reservation.id_computer));
                     cmd.CommandType = System.Data.CommandType.Text;
 
-                if (cmd.ExecuteNonQuery() > 0) {
+                if (cmd.ExecuteNonQuery() > 0) { 
                     res = true;
                 };
             }
