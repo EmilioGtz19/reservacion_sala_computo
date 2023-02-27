@@ -99,5 +99,67 @@ namespace reservacion_sala_computo.Logic
 
         }
 
+        public bool EditReservation(ReservationList reservation)
+        {
+            bool res = false;
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+                string query = "UPDATE reservation set " +
+                    "student_number = @student_number, " +
+                    "student_name = @student_name, " +
+                    "day = @day, " +
+                    "hour_in = @hour_in, " +
+                    "hour_out = @hour_out, " +
+                    "id_career = @id_career, " +
+                    "id_computer = @id_computer " +
+                    "WHERE id_reservation = @id_reservation";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                cmd.Parameters.Add(new SQLiteParameter("@id_reservation", reservation.id_reservation));
+                cmd.Parameters.Add(new SQLiteParameter("@student_number", reservation.student_number));
+                cmd.Parameters.Add(new SQLiteParameter("@student_name", reservation.student_name));
+                cmd.Parameters.Add(new SQLiteParameter("@day", reservation.day));
+                cmd.Parameters.Add(new SQLiteParameter("@hour_in", reservation.hour_in));
+                cmd.Parameters.Add(new SQLiteParameter("@hour_out", reservation.hour_out));
+                cmd.Parameters.Add(new SQLiteParameter("@id_career", reservation.career_name));
+                cmd.Parameters.Add(new SQLiteParameter("@id_computer", reservation.computer_number));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                if(cmd.ExecuteNonQuery() > 0)
+                {
+                    res = true;
+                }
+
+
+            }
+
+            return res;
+        }
+
+        public bool DeleteReservation(ReservationList reservation)
+        {
+            bool res = false;
+            using (SQLiteConnection connection = new SQLiteConnection(conn))
+            {
+                connection.Open();
+                string query = "DELETE from reservation " +
+                    "WHERE id_reservation = @id_reservation";
+
+                SQLiteCommand cmd = new SQLiteCommand(query, connection);
+                cmd.Parameters.Add(new SQLiteParameter("@id_reservation", reservation.id_reservation));
+                cmd.CommandType = System.Data.CommandType.Text;
+
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    res = true;
+                }
+
+
+            }
+
+            return res;
+        }
+
     }
 }
