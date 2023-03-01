@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using reservacion_sala_computo.Model;
 using reservacion_sala_computo.Logic;
 using reservacion_sala_computo.Connection;
+using Microsoft.Office.Interop.Excel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace reservacion_sala_computo
 {
@@ -23,11 +25,64 @@ namespace reservacion_sala_computo
         {
             InitializeComponent();
             loadInfo();
-            //Ahora si desde angus
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            validation();
+        }
+
+        private void loadInfo()
+        {
+            List<Computer> computers = new ComputerLogic().GetComputers();
+            List<Career> careers = new CareerLogic().GetCareer();
+
+           foreach(Computer computer in computers)
+            {
+                cbComputers.Items.Add(computer.computer_number);
+            }
+
+           
+           foreach(Career career in careers)
+            {
+                cbCareers.Items.Add(career.career_name);
+            }
+
+        }
+
+        private void btnReservation_Click(object sender, EventArgs e)
+        {
+            FrmDetail frm = new FrmDetail();
+            frm.ShowDialog();
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 33 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
+            {
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void validation()
+        {
+
             error = "";
             validate = true;
             int career;
@@ -97,7 +152,6 @@ namespace reservacion_sala_computo
             if (validate)
             {
 
-
                 reservation.student_number = int.Parse(number);
                 reservation.student_name = name;
                 reservation.day = today.ToString("dd/MM/yyyy");
@@ -109,6 +163,9 @@ namespace reservacion_sala_computo
                 if (res)
                 {
                     MessageBox.Show("Registro completado", "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //intento de vaciar campos.
+                    clean();
+
 
                 }
                 else
@@ -126,52 +183,16 @@ namespace reservacion_sala_computo
 
         }
 
-        private void loadInfo()
+        private void clean()
         {
-            List<Computer> computers = new ComputerLogic().GetComputers();
-            List<Career> careers = new CareerLogic().GetCareer();
-
-           foreach(Computer computer in computers)
-            {
-                cbComputers.Items.Add(computer.computer_number);
-            }
-
-           
-           foreach(Career career in careers)
-            {
-                cbCareers.Items.Add(career.career_name);
-            }
-
+            txtName.Text = "";
+            txtNumber.Text = "";
+            dtpIn.Value = DateTime.Now;
+            dtpOut.Value = DateTime.Now;
+            cbCareers.ResetText();
+            cbComputers.ResetText();
+            txtName.Focus();
         }
 
-        private void btnReservation_Click(object sender, EventArgs e)
-        {
-            FrmDetail frm = new FrmDetail();
-            frm.ShowDialog();
-
-        }
-
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void txtNumber_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if((e.KeyChar >= 32 && e.KeyChar <= 47) || (e.KeyChar >= 58 && e.KeyChar <= 255))
-            {
-                e.Handled = true;
-                return;
-            }
-        }
-
-        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((e.KeyChar >= 33 && e.KeyChar <= 64) || (e.KeyChar >= 91 && e.KeyChar <= 96) || (e.KeyChar >= 123 && e.KeyChar <= 255))
-            {
-                e.Handled = true;
-                return;
-            }
-        }
     }
 }
