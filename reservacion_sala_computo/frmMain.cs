@@ -189,8 +189,8 @@ namespace reservacion_sala_computo
             txtNumber.Text = "";
             dtpIn.Value = DateTime.Now;
             dtpOut.Value = DateTime.Now;
-            cbCareers.ResetText();
-            cbComputers.ResetText();
+            cbCareers.SelectedIndex = -1;
+            cbComputers.SelectedIndex = -1;
             txtName.Focus();
         }
 

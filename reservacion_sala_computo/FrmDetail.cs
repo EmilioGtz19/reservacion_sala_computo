@@ -122,6 +122,8 @@ namespace reservacion_sala_computo
         {
             Reservation reservation = new Reservation();
 
+            //aqui debe tambien ir las validaciones
+
             reservation.id_reservation = int.Parse(txtIdDt.Text);
             reservation.student_name = txtNameDt.Text;
             reservation.student_number = int.Parse(txtNumberDt.Text);
@@ -201,8 +203,8 @@ namespace reservacion_sala_computo
             txtNumberDt.Text = "";
             dtpInDt.Value = DateTime.Now;
             dtpOutDt.Value = DateTime.Now;
-            cbCareersDt.ResetText();
-            cbComputerDt.ResetText();
+            cbCareersDt.SelectedIndex = -1;
+            cbComputerDt.SelectedIndex = -1;
             txtNameDt.Focus();
         }
 
