@@ -34,6 +34,17 @@
             this.dgvReservations = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblNotes = new System.Windows.Forms.Label();
+            this.txtNoteDt = new System.Windows.Forms.TextBox();
+            this.dtpDateDt = new System.Windows.Forms.DateTimePicker();
+            this.dtpInDt = new System.Windows.Forms.DateTimePicker();
+            this.dtpOutDt = new System.Windows.Forms.DateTimePicker();
+            this.cbComputerDt = new System.Windows.Forms.ComboBox();
+            this.cbCareersDt = new System.Windows.Forms.ComboBox();
+            this.txtNumberDt = new System.Windows.Forms.TextBox();
+            this.txtNameDt = new System.Windows.Forms.TextBox();
+            this.lblTitleHourOut = new System.Windows.Forms.Label();
+            this.lblTitleHourIn = new System.Windows.Forms.Label();
             this.lblTitleDate = new System.Windows.Forms.Label();
             this.lblTitleComputer = new System.Windows.Forms.Label();
             this.lblTitleCareer = new System.Windows.Forms.Label();
@@ -47,9 +58,8 @@
             // 
             // btnEdit
             // 
-
-            this.btnSaveEdit.Location = new System.Drawing.Point(251, 324);
-            this.btnSaveEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSaveEdit.Location = new System.Drawing.Point(253, 334);
+            this.btnSaveEdit.Margin = new System.Windows.Forms.Padding(4);
             this.btnSaveEdit.Name = "btnSaveEdit";
             this.btnSaveEdit.Size = new System.Drawing.Size(136, 28);
             this.btnSaveEdit.TabIndex = 6;
@@ -59,8 +69,8 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(15, 324);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDelete.Location = new System.Drawing.Point(14, 334);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(136, 28);
             this.btnDelete.TabIndex = 7;
@@ -71,7 +81,7 @@
             // btnBack
             // 
             this.btnBack.Location = new System.Drawing.Point(1347, 511);
-            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(124, 28);
             this.btnBack.TabIndex = 8;
@@ -102,6 +112,15 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblNotes);
+            this.groupBox1.Controls.Add(this.txtNoteDt);
+            this.groupBox1.Controls.Add(this.dtpDateDt);
+            this.groupBox1.Controls.Add(this.dtpInDt);
+            this.groupBox1.Controls.Add(this.dtpOutDt);
+            this.groupBox1.Controls.Add(this.cbComputerDt);
+            this.groupBox1.Controls.Add(this.cbCareersDt);
+            this.groupBox1.Controls.Add(this.txtNumberDt);
+            this.groupBox1.Controls.Add(this.txtNameDt);
             this.groupBox1.Controls.Add(this.lblTitleHourOut);
             this.groupBox1.Controls.Add(this.lblTitleHourIn);
             this.groupBox1.Controls.Add(this.lblTitleDate);
@@ -120,32 +139,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle de reservación:";
             // 
-            // lblTitleID
+            // lblNotes
             // 
-            this.lblTitleID.AutoSize = true;
-            this.lblTitleID.Location = new System.Drawing.Point(247, 15);
-            this.lblTitleID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitleID.Name = "lblTitleID";
-            this.lblTitleID.Size = new System.Drawing.Size(100, 16);
-            this.lblTitleID.TabIndex = 16;
-            this.lblTitleID.Text = "ID Reservación";
+            this.lblNotes.AutoSize = true;
+            this.lblNotes.Location = new System.Drawing.Point(64, 294);
+            this.lblNotes.Name = "lblNotes";
+            this.lblNotes.Size = new System.Drawing.Size(43, 16);
+            this.lblNotes.TabIndex = 18;
+            this.lblNotes.Text = "Notas";
             // 
-            // txtIdDt
+            // txtNoteDt
             // 
-            this.txtIdDt.Enabled = false;
-            this.txtIdDt.Location = new System.Drawing.Point(363, 11);
-            this.txtIdDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtIdDt.Name = "txtIdDt";
-            this.txtIdDt.ReadOnly = true;
-            this.txtIdDt.Size = new System.Drawing.Size(35, 22);
-            this.txtIdDt.TabIndex = 15;
+            this.txtNoteDt.Location = new System.Drawing.Point(165, 291);
+            this.txtNoteDt.Name = "txtNoteDt";
+            this.txtNoteDt.Size = new System.Drawing.Size(160, 22);
+            this.txtNoteDt.TabIndex = 17;
             // 
             // dtpDateDt
             // 
             this.dtpDateDt.CustomFormat = "dd/MM/yyyy";
             this.dtpDateDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDateDt.Location = new System.Drawing.Point(165, 177);
-            this.dtpDateDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDateDt.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDateDt.Name = "dtpDateDt";
             this.dtpDateDt.Size = new System.Drawing.Size(160, 22);
             this.dtpDateDt.TabIndex = 14;
@@ -155,7 +170,7 @@
             this.dtpInDt.CustomFormat = "HH:mm";
             this.dtpInDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpInDt.Location = new System.Drawing.Point(165, 213);
-            this.dtpInDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpInDt.Margin = new System.Windows.Forms.Padding(4);
             this.dtpInDt.Name = "dtpInDt";
             this.dtpInDt.ShowUpDown = true;
             this.dtpInDt.Size = new System.Drawing.Size(160, 22);
@@ -166,7 +181,7 @@
             this.dtpOutDt.CustomFormat = "HH:mm";
             this.dtpOutDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpOutDt.Location = new System.Drawing.Point(165, 251);
-            this.dtpOutDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpOutDt.Margin = new System.Windows.Forms.Padding(4);
             this.dtpOutDt.Name = "dtpOutDt";
             this.dtpOutDt.ShowUpDown = true;
             this.dtpOutDt.Size = new System.Drawing.Size(160, 22);
@@ -177,7 +192,7 @@
             this.cbComputerDt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbComputerDt.FormattingEnabled = true;
             this.cbComputerDt.Location = new System.Drawing.Point(165, 144);
-            this.cbComputerDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbComputerDt.Margin = new System.Windows.Forms.Padding(4);
             this.cbComputerDt.Name = "cbComputerDt";
             this.cbComputerDt.Size = new System.Drawing.Size(160, 24);
             this.cbComputerDt.TabIndex = 11;
@@ -187,7 +202,7 @@
             this.cbCareersDt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCareersDt.FormattingEnabled = true;
             this.cbCareersDt.Location = new System.Drawing.Point(165, 112);
-            this.cbCareersDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCareersDt.Margin = new System.Windows.Forms.Padding(4);
             this.cbCareersDt.Name = "cbCareersDt";
             this.cbCareersDt.Size = new System.Drawing.Size(160, 24);
             this.cbCareersDt.TabIndex = 10;
@@ -195,7 +210,7 @@
             // txtNumberDt
             // 
             this.txtNumberDt.Location = new System.Drawing.Point(165, 41);
-            this.txtNumberDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNumberDt.Margin = new System.Windows.Forms.Padding(4);
             this.txtNumberDt.Name = "txtNumberDt";
             this.txtNumberDt.Size = new System.Drawing.Size(132, 22);
             this.txtNumberDt.TabIndex = 9;
@@ -205,7 +220,7 @@
             // 
             this.txtNameDt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNameDt.Location = new System.Drawing.Point(165, 76);
-            this.txtNameDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNameDt.Margin = new System.Windows.Forms.Padding(4);
             this.txtNameDt.Name = "txtNameDt";
             this.txtNameDt.Size = new System.Drawing.Size(132, 22);
             this.txtNameDt.TabIndex = 8;
@@ -301,7 +316,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvReservations);
             this.Controls.Add(this.btnBack);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmDetail";
             this.Text = "Detalles de reservación";
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservations)).EndInit();
@@ -326,5 +341,14 @@
         private System.Windows.Forms.Label lblTitleComputer;
         private System.Windows.Forms.Label lblTitleHourOut;
         private System.Windows.Forms.Label lblTitleHourIn;
+        private System.Windows.Forms.TextBox txtNumberDt;
+        private System.Windows.Forms.TextBox txtNameDt;
+        private System.Windows.Forms.DateTimePicker dtpDateDt;
+        private System.Windows.Forms.DateTimePicker dtpInDt;
+        private System.Windows.Forms.DateTimePicker dtpOutDt;
+        private System.Windows.Forms.ComboBox cbComputerDt;
+        private System.Windows.Forms.ComboBox cbCareersDt;
+        private System.Windows.Forms.Label lblNotes;
+        private System.Windows.Forms.TextBox txtNoteDt;
     }
 }

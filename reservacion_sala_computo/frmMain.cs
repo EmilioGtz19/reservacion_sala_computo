@@ -109,12 +109,16 @@ namespace reservacion_sala_computo
                 if (res)
                 {
                     MessageBox.Show("Registro completado", "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //intento de vaciar campos.
+                    clean();
+
+
+
 
                 }
                 else
                 {
                     MessageBox.Show("Error al guardar en la base de datos", "Error base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
 
 
