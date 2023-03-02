@@ -10,23 +10,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-using Microsoft.Office.Interop.Excel;
-using System.ComponentModel.DataAnnotations;
 
 namespace reservacion_sala_computo
 {
     public partial class FrmDetail : Form
     {
-        bool validate = true;
-        string error;
         public FrmDetail()
         {
             InitializeComponent();
             loadInfo();
-            loadCb();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -37,6 +29,7 @@ namespace reservacion_sala_computo
         private void btnDelete_Click(object sender, EventArgs e)
         {
             MessageBox.Show("¿Está seguro que quiere borrar la reservación?", "Confirmar eliminación", MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
+
             
             
             Reservation reservationID = new Reservation();
@@ -68,30 +61,17 @@ namespace reservacion_sala_computo
             {
                 bool res = new ReservationLogic().EditReservation(reservation);
 
-                if (res)
-                {
-                    cleanForm();
-                    MessageBox.Show("Se ha guardado la edición.", "Éxito en la edición", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    loadInfo();
-                }
-                else
-                {
-                    MessageBox.Show("Hubo un error al editar.", "Error en la edición", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-                }
-
-            }
-            else
-            {
-                MessageBox.Show(error, "Error al guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
 
         }
 
         private void loadInfo()
         {
             List<ReservationList> reservations = new ReservationLogic().GetReservations();
-            
+
             dgvReservations.DataSource = reservations;
 
             dgvReservations.Columns["id_reservation"].Visible = false;
@@ -240,6 +220,7 @@ namespace reservacion_sala_computo
             {
                 cbCareersDt.Items.Add(career.career_name);
             }
+
         }
     }
 }

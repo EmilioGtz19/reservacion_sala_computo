@@ -28,34 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSaveEdit = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.dgvReservations = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblTitleID = new System.Windows.Forms.Label();
-            this.txtIdDt = new System.Windows.Forms.TextBox();
-            this.dtpDateDt = new System.Windows.Forms.DateTimePicker();
-            this.dtpInDt = new System.Windows.Forms.DateTimePicker();
-            this.dtpOutDt = new System.Windows.Forms.DateTimePicker();
-            this.cbComputerDt = new System.Windows.Forms.ComboBox();
-            this.cbCareersDt = new System.Windows.Forms.ComboBox();
-            this.txtNumberDt = new System.Windows.Forms.TextBox();
-            this.txtNameDt = new System.Windows.Forms.TextBox();
-            this.lblTitleHourOut = new System.Windows.Forms.Label();
-            this.lblTitleHourIn = new System.Windows.Forms.Label();
             this.lblTitleDate = new System.Windows.Forms.Label();
             this.lblTitleComputer = new System.Windows.Forms.Label();
             this.lblTitleCareer = new System.Windows.Forms.Label();
             this.lblTitleNumber = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
+            this.lblTitleHourIn = new System.Windows.Forms.Label();
+            this.lblTitleHourOut = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservations)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnSaveEdit
+            // btnEdit
             // 
+
             this.btnSaveEdit.Location = new System.Drawing.Point(251, 324);
             this.btnSaveEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSaveEdit.Name = "btnSaveEdit";
@@ -98,7 +90,6 @@
             this.dgvReservations.RowTemplate.Height = 24;
             this.dgvReservations.Size = new System.Drawing.Size(1027, 350);
             this.dgvReservations.TabIndex = 9;
-            this.dgvReservations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservations_CellClick);
             // 
             // label1
             // 
@@ -111,22 +102,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblTitleID);
-            this.groupBox1.Controls.Add(this.txtIdDt);
-            this.groupBox1.Controls.Add(this.dtpDateDt);
-            this.groupBox1.Controls.Add(this.dtpInDt);
-            this.groupBox1.Controls.Add(this.dtpOutDt);
-            this.groupBox1.Controls.Add(this.cbComputerDt);
-            this.groupBox1.Controls.Add(this.cbCareersDt);
-            this.groupBox1.Controls.Add(this.txtNumberDt);
-            this.groupBox1.Controls.Add(this.txtNameDt);
             this.groupBox1.Controls.Add(this.lblTitleHourOut);
             this.groupBox1.Controls.Add(this.lblTitleHourIn);
             this.groupBox1.Controls.Add(this.lblTitleDate);
             this.groupBox1.Controls.Add(this.lblTitleComputer);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.lblTitleCareer);
-            this.groupBox1.Controls.Add(this.btnSaveEdit);
+            this.groupBox1.Controls.Add(this.btnEdit);
             this.groupBox1.Controls.Add(this.lblTitleNumber);
             this.groupBox1.Controls.Add(this.lblTitleName);
             this.groupBox1.Location = new System.Drawing.Point(13, 28);
@@ -292,6 +274,24 @@
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Nombre:";
             // 
+            // lblTitleHourIn
+            // 
+            this.lblTitleHourIn.AutoSize = true;
+            this.lblTitleHourIn.Location = new System.Drawing.Point(11, 220);
+            this.lblTitleHourIn.Name = "lblTitleHourIn";
+            this.lblTitleHourIn.Size = new System.Drawing.Size(108, 16);
+            this.lblTitleHourIn.TabIndex = 5;
+            this.lblTitleHourIn.Text = "Hora de entrada:";
+            // 
+            // lblTitleHourOut
+            // 
+            this.lblTitleHourOut.AutoSize = true;
+            this.lblTitleHourOut.Location = new System.Drawing.Point(20, 258);
+            this.lblTitleHourOut.Name = "lblTitleHourOut";
+            this.lblTitleHourOut.Size = new System.Drawing.Size(99, 16);
+            this.lblTitleHourOut.TabIndex = 6;
+            this.lblTitleHourOut.Text = "Hora de salida:";
+            // 
             // FrmDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -313,7 +313,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnSaveEdit;
+        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DataGridView dgvReservations;
@@ -326,14 +326,5 @@
         private System.Windows.Forms.Label lblTitleComputer;
         private System.Windows.Forms.Label lblTitleHourOut;
         private System.Windows.Forms.Label lblTitleHourIn;
-        private System.Windows.Forms.TextBox txtNumberDt;
-        private System.Windows.Forms.TextBox txtNameDt;
-        private System.Windows.Forms.DateTimePicker dtpDateDt;
-        private System.Windows.Forms.DateTimePicker dtpInDt;
-        private System.Windows.Forms.DateTimePicker dtpOutDt;
-        private System.Windows.Forms.ComboBox cbComputerDt;
-        private System.Windows.Forms.ComboBox cbCareersDt;
-        private System.Windows.Forms.Label lblTitleID;
-        private System.Windows.Forms.TextBox txtIdDt;
     }
 }

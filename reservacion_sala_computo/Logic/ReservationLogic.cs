@@ -1,4 +1,4 @@
-﻿using reservacion_sala_computo.Connection;
+using reservacion_sala_computo.Connection;
 using reservacion_sala_computo.Model;
 using System;
 using System.Collections.Generic;
@@ -162,6 +162,5 @@ namespace reservacion_sala_computo.Logic
 
             return res;
         }
-
     }
 }
