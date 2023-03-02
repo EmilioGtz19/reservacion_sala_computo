@@ -39,7 +39,7 @@ namespace reservacion_sala_computo
             MessageBox.Show("¿Está seguro que quiere borrar la reservación?", "Confirmar eliminación", MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
             
             
-            ReservationList reservationID = new ReservationList();
+            Reservation reservationID = new Reservation();
             reservationID.id_reservation = Int32.Parse(txtIdDt.Text);
             bool res = new ReservationLogic().DeleteReservation(reservationID);
 
@@ -60,7 +60,7 @@ namespace reservacion_sala_computo
         {
 
             //se validan los datos, luego se guarda
-            ReservationList reservation;
+            Reservation reservation;
             reservation = getFormInfo();
             string error = validation(reservation);
 
@@ -118,15 +118,16 @@ namespace reservacion_sala_computo
 
         }
 
-        private ReservationList getFormInfo()
+        private Reservation getFormInfo()
         {
-            ReservationList reservation = new ReservationList();
+            Reservation reservation = new Reservation();
 
             reservation.id_reservation = int.Parse(txtIdDt.Text);
             reservation.student_name = txtNameDt.Text;
             reservation.student_number = int.Parse(txtNumberDt.Text);
-            reservation.career_name = (int.Parse(cbCareersDt.SelectedIndex.ToString()) + 1).ToString();
-            reservation.computer_number = int.Parse(cbComputerDt.Text);
+            reservation.id_career = int.Parse(cbCareersDt.SelectedIndex.ToString()) + 1;
+            reservation.id_computer = int.Parse(cbComputerDt.Text);
+            //reservation.note = 
             reservation.day = dtpDateDt.Text;
             reservation.hour_in = dtpInDt.Text;
             reservation.hour_out = dtpOutDt.Text;
@@ -135,13 +136,13 @@ namespace reservacion_sala_computo
         }
 
 
-        private string validation(ReservationList reservation)
+        private string validation(Reservation reservation)
         {
 
             error = "";
             validate = true;
-            //int career = int.Parse(reservation.career_name);
-            //int computer = reservation.computer_number;
+            int career = reservation.id_career;
+            int computer = reservation.id_computer;
             string name = reservation.student_name;
             string number = reservation.student_number.ToString();
             string hourIn = reservation.hour_in;

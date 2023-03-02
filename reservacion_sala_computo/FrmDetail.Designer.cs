@@ -56,9 +56,10 @@
             // 
             // btnSaveEdit
             // 
-            this.btnSaveEdit.Location = new System.Drawing.Point(188, 263);
+            this.btnSaveEdit.Location = new System.Drawing.Point(251, 324);
+            this.btnSaveEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSaveEdit.Name = "btnSaveEdit";
-            this.btnSaveEdit.Size = new System.Drawing.Size(102, 23);
+            this.btnSaveEdit.Size = new System.Drawing.Size(136, 28);
             this.btnSaveEdit.TabIndex = 6;
             this.btnSaveEdit.Text = "Guardar edición";
             this.btnSaveEdit.UseVisualStyleBackColor = true;
@@ -66,9 +67,10 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(11, 263);
+            this.btnDelete.Location = new System.Drawing.Point(15, 324);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(102, 23);
+            this.btnDelete.Size = new System.Drawing.Size(136, 28);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "Eliminar";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -76,9 +78,10 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(1010, 415);
+            this.btnBack.Location = new System.Drawing.Point(1347, 511);
+            this.btnBack.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(93, 23);
+            this.btnBack.Size = new System.Drawing.Size(124, 28);
             this.btnBack.TabIndex = 8;
             this.btnBack.Text = "Volver";
             this.btnBack.UseVisualStyleBackColor = true;
@@ -87,23 +90,22 @@
             // dgvReservations
             // 
             this.dgvReservations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReservations.Location = new System.Drawing.Point(334, 46);
-            this.dgvReservations.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvReservations.Location = new System.Drawing.Point(445, 57);
+            this.dgvReservations.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvReservations.Name = "dgvReservations";
             this.dgvReservations.ReadOnly = true;
             this.dgvReservations.RowHeadersWidth = 51;
             this.dgvReservations.RowTemplate.Height = 24;
-            this.dgvReservations.Size = new System.Drawing.Size(770, 284);
+            this.dgvReservations.Size = new System.Drawing.Size(1027, 350);
             this.dgvReservations.TabIndex = 9;
             this.dgvReservations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservations_CellClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(332, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(443, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 13);
+            this.label1.Size = new System.Drawing.Size(99, 16);
             this.label1.TabIndex = 10;
             this.label1.Text = "Reservaciones";
             // 
@@ -127,11 +129,11 @@
             this.groupBox1.Controls.Add(this.btnSaveEdit);
             this.groupBox1.Controls.Add(this.lblTitleNumber);
             this.groupBox1.Controls.Add(this.lblTitleName);
-            this.groupBox1.Location = new System.Drawing.Point(10, 23);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Location = new System.Drawing.Point(13, 28);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(304, 307);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(405, 378);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalle de reservación:";
@@ -139,164 +141,167 @@
             // lblTitleID
             // 
             this.lblTitleID.AutoSize = true;
-            this.lblTitleID.Location = new System.Drawing.Point(185, 12);
+            this.lblTitleID.Location = new System.Drawing.Point(247, 15);
+            this.lblTitleID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitleID.Name = "lblTitleID";
-            this.lblTitleID.Size = new System.Drawing.Size(81, 13);
+            this.lblTitleID.Size = new System.Drawing.Size(100, 16);
             this.lblTitleID.TabIndex = 16;
             this.lblTitleID.Text = "ID Reservación";
             // 
             // txtIdDt
             // 
             this.txtIdDt.Enabled = false;
-            this.txtIdDt.Location = new System.Drawing.Point(272, 9);
+            this.txtIdDt.Location = new System.Drawing.Point(363, 11);
+            this.txtIdDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtIdDt.Name = "txtIdDt";
             this.txtIdDt.ReadOnly = true;
-            this.txtIdDt.Size = new System.Drawing.Size(27, 20);
+            this.txtIdDt.Size = new System.Drawing.Size(35, 22);
             this.txtIdDt.TabIndex = 15;
             // 
             // dtpDateDt
             // 
             this.dtpDateDt.CustomFormat = "dd/MM/yyyy";
             this.dtpDateDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateDt.Location = new System.Drawing.Point(124, 144);
+            this.dtpDateDt.Location = new System.Drawing.Point(165, 177);
+            this.dtpDateDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpDateDt.Name = "dtpDateDt";
-            this.dtpDateDt.Size = new System.Drawing.Size(121, 20);
+            this.dtpDateDt.Size = new System.Drawing.Size(160, 22);
             this.dtpDateDt.TabIndex = 14;
             // 
             // dtpInDt
             // 
             this.dtpInDt.CustomFormat = "HH:mm";
             this.dtpInDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpInDt.Location = new System.Drawing.Point(124, 173);
+            this.dtpInDt.Location = new System.Drawing.Point(165, 213);
+            this.dtpInDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpInDt.Name = "dtpInDt";
             this.dtpInDt.ShowUpDown = true;
-            this.dtpInDt.Size = new System.Drawing.Size(121, 20);
+            this.dtpInDt.Size = new System.Drawing.Size(160, 22);
             this.dtpInDt.TabIndex = 13;
             // 
             // dtpOutDt
             // 
             this.dtpOutDt.CustomFormat = "HH:mm";
             this.dtpOutDt.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpOutDt.Location = new System.Drawing.Point(124, 204);
+            this.dtpOutDt.Location = new System.Drawing.Point(165, 251);
+            this.dtpOutDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpOutDt.Name = "dtpOutDt";
             this.dtpOutDt.ShowUpDown = true;
-            this.dtpOutDt.Size = new System.Drawing.Size(121, 20);
+            this.dtpOutDt.Size = new System.Drawing.Size(160, 22);
             this.dtpOutDt.TabIndex = 12;
             // 
             // cbComputerDt
             // 
             this.cbComputerDt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbComputerDt.FormattingEnabled = true;
-            this.cbComputerDt.Location = new System.Drawing.Point(124, 117);
+            this.cbComputerDt.Location = new System.Drawing.Point(165, 144);
+            this.cbComputerDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbComputerDt.Name = "cbComputerDt";
-            this.cbComputerDt.Size = new System.Drawing.Size(121, 21);
+            this.cbComputerDt.Size = new System.Drawing.Size(160, 24);
             this.cbComputerDt.TabIndex = 11;
             // 
             // cbCareersDt
             // 
             this.cbCareersDt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCareersDt.FormattingEnabled = true;
-            this.cbCareersDt.Location = new System.Drawing.Point(124, 91);
+            this.cbCareersDt.Location = new System.Drawing.Point(165, 112);
+            this.cbCareersDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cbCareersDt.Name = "cbCareersDt";
-            this.cbCareersDt.Size = new System.Drawing.Size(121, 21);
+            this.cbCareersDt.Size = new System.Drawing.Size(160, 24);
             this.cbCareersDt.TabIndex = 10;
             // 
             // txtNumberDt
             // 
-            this.txtNumberDt.Location = new System.Drawing.Point(124, 33);
+            this.txtNumberDt.Location = new System.Drawing.Point(165, 41);
+            this.txtNumberDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNumberDt.Name = "txtNumberDt";
-            this.txtNumberDt.Size = new System.Drawing.Size(100, 20);
+            this.txtNumberDt.Size = new System.Drawing.Size(132, 22);
             this.txtNumberDt.TabIndex = 9;
             this.txtNumberDt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumberDt_KeyPress);
             // 
             // txtNameDt
             // 
             this.txtNameDt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNameDt.Location = new System.Drawing.Point(124, 62);
+            this.txtNameDt.Location = new System.Drawing.Point(165, 76);
+            this.txtNameDt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNameDt.Name = "txtNameDt";
-            this.txtNameDt.Size = new System.Drawing.Size(100, 20);
+            this.txtNameDt.Size = new System.Drawing.Size(132, 22);
             this.txtNameDt.TabIndex = 8;
             this.txtNameDt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNameDt_KeyPress);
             // 
             // lblTitleHourOut
             // 
             this.lblTitleHourOut.AutoSize = true;
-            this.lblTitleHourOut.Location = new System.Drawing.Point(15, 210);
-            this.lblTitleHourOut.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleHourOut.Location = new System.Drawing.Point(20, 258);
             this.lblTitleHourOut.Name = "lblTitleHourOut";
-            this.lblTitleHourOut.Size = new System.Drawing.Size(78, 13);
+            this.lblTitleHourOut.Size = new System.Drawing.Size(99, 16);
             this.lblTitleHourOut.TabIndex = 6;
             this.lblTitleHourOut.Text = "Hora de salida:";
             // 
             // lblTitleHourIn
             // 
             this.lblTitleHourIn.AutoSize = true;
-            this.lblTitleHourIn.Location = new System.Drawing.Point(8, 179);
-            this.lblTitleHourIn.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleHourIn.Location = new System.Drawing.Point(11, 220);
             this.lblTitleHourIn.Name = "lblTitleHourIn";
-            this.lblTitleHourIn.Size = new System.Drawing.Size(87, 13);
+            this.lblTitleHourIn.Size = new System.Drawing.Size(108, 16);
             this.lblTitleHourIn.TabIndex = 5;
             this.lblTitleHourIn.Text = "Hora de entrada:";
             // 
             // lblTitleDate
             // 
             this.lblTitleDate.AutoSize = true;
-            this.lblTitleDate.Location = new System.Drawing.Point(53, 151);
-            this.lblTitleDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleDate.Location = new System.Drawing.Point(71, 186);
             this.lblTitleDate.Name = "lblTitleDate";
-            this.lblTitleDate.Size = new System.Drawing.Size(40, 13);
+            this.lblTitleDate.Size = new System.Drawing.Size(48, 16);
             this.lblTitleDate.TabIndex = 4;
             this.lblTitleDate.Text = "Fecha:";
             // 
             // lblTitleComputer
             // 
             this.lblTitleComputer.AutoSize = true;
-            this.lblTitleComputer.Location = new System.Drawing.Point(20, 125);
-            this.lblTitleComputer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleComputer.Location = new System.Drawing.Point(27, 154);
             this.lblTitleComputer.Name = "lblTitleComputer";
-            this.lblTitleComputer.Size = new System.Drawing.Size(73, 13);
+            this.lblTitleComputer.Size = new System.Drawing.Size(92, 16);
             this.lblTitleComputer.TabIndex = 3;
             this.lblTitleComputer.Text = "Computadora:";
             // 
             // lblTitleCareer
             // 
             this.lblTitleCareer.AutoSize = true;
-            this.lblTitleCareer.Location = new System.Drawing.Point(48, 98);
-            this.lblTitleCareer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleCareer.Location = new System.Drawing.Point(64, 121);
             this.lblTitleCareer.Name = "lblTitleCareer";
-            this.lblTitleCareer.Size = new System.Drawing.Size(44, 13);
+            this.lblTitleCareer.Size = new System.Drawing.Size(55, 16);
             this.lblTitleCareer.TabIndex = 2;
             this.lblTitleCareer.Text = "Carrera:";
             // 
             // lblTitleNumber
             // 
             this.lblTitleNumber.AutoSize = true;
-            this.lblTitleNumber.Location = new System.Drawing.Point(38, 40);
-            this.lblTitleNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleNumber.Location = new System.Drawing.Point(51, 49);
             this.lblTitleNumber.Name = "lblTitleNumber";
-            this.lblTitleNumber.Size = new System.Drawing.Size(55, 13);
+            this.lblTitleNumber.Size = new System.Drawing.Size(64, 16);
             this.lblTitleNumber.TabIndex = 1;
             this.lblTitleNumber.Text = "Matrícula:";
             // 
             // lblTitleName
             // 
             this.lblTitleName.AutoSize = true;
-            this.lblTitleName.Location = new System.Drawing.Point(45, 69);
-            this.lblTitleName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitleName.Location = new System.Drawing.Point(60, 85);
             this.lblTitleName.Name = "lblTitleName";
-            this.lblTitleName.Size = new System.Drawing.Size(47, 13);
+            this.lblTitleName.Size = new System.Drawing.Size(59, 16);
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Nombre:";
             // 
             // FrmDetail
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1115, 450);
+            this.ClientSize = new System.Drawing.Size(1487, 554);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvReservations);
             this.Controls.Add(this.btnBack);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmDetail";
             this.Text = "Detalles de reservación";
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservations)).EndInit();

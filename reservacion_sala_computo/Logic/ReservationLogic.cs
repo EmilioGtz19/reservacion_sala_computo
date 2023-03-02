@@ -99,7 +99,7 @@ namespace reservacion_sala_computo.Logic
 
         }
 
-        public bool EditReservation(ReservationList reservation)
+        public bool EditReservation(Reservation reservation)
         {
             bool res = false;
             using (SQLiteConnection connection = new SQLiteConnection(conn))
@@ -108,6 +108,7 @@ namespace reservacion_sala_computo.Logic
                 string query = "UPDATE reservation set " +
                     "student_number = @student_number, " +
                     "student_name = @student_name, " +
+                    "note = @note" +
                     "day = @day, " +
                     "hour_in = @hour_in, " +
                     "hour_out = @hour_out, " +
@@ -119,11 +120,12 @@ namespace reservacion_sala_computo.Logic
                 cmd.Parameters.Add(new SQLiteParameter("@id_reservation", reservation.id_reservation));
                 cmd.Parameters.Add(new SQLiteParameter("@student_number", reservation.student_number));
                 cmd.Parameters.Add(new SQLiteParameter("@student_name", reservation.student_name));
+                cmd.Parameters.Add(new SQLiteParameter("@note", reservation.note));
                 cmd.Parameters.Add(new SQLiteParameter("@day", reservation.day));
                 cmd.Parameters.Add(new SQLiteParameter("@hour_in", reservation.hour_in));
                 cmd.Parameters.Add(new SQLiteParameter("@hour_out", reservation.hour_out));
-                cmd.Parameters.Add(new SQLiteParameter("@id_career", reservation.career_name));
-                cmd.Parameters.Add(new SQLiteParameter("@id_computer", reservation.computer_number));
+                cmd.Parameters.Add(new SQLiteParameter("@id_career", reservation.id_career));
+                cmd.Parameters.Add(new SQLiteParameter("@id_computer", reservation.id_computer));
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 if(cmd.ExecuteNonQuery() > 0)
@@ -137,7 +139,7 @@ namespace reservacion_sala_computo.Logic
             return res;
         }
 
-        public bool DeleteReservation(ReservationList reservation)
+        public bool DeleteReservation(Reservation reservation)
         {
             bool res = false;
             using (SQLiteConnection connection = new SQLiteConnection(conn))
