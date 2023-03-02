@@ -128,6 +128,14 @@ namespace reservacion_sala_computo
 
         private void loadInfo()
         {
+
+            txtName.Text = "";
+            txtNumber.Text = "";
+            dtpIn.Value = DateTime.Now;
+            dtpOut.Value = DateTime.Now;
+            cbCareers.SelectedIndex = -1;
+            cbComputers.SelectedIndex = -1;
+            txtName.Focus();
             List<Computer> computers = new ComputerLogic().GetComputers();
             List<Career> careers = new CareerLogic().GetCareer();
 
@@ -141,7 +149,6 @@ namespace reservacion_sala_computo
             {
                 cbCareers.Items.Add(career.career_name);
             }
-
         }
 
         private void btnReservation_Click(object sender, EventArgs e)
