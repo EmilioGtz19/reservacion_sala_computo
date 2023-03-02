@@ -10,12 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-using Microsoft.Office.Interop.Excel;
-using System.ComponentModel.DataAnnotations;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
+
 
 namespace reservacion_sala_computo
 {
@@ -28,6 +23,7 @@ namespace reservacion_sala_computo
         {
             InitializeComponent();
             loadInfo();
+            loadCb();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -66,9 +62,8 @@ namespace reservacion_sala_computo
             }
 
         }
-        private void btnSaveEdit_Click(object sender, EventArgs e)
+        private void btnEditDt_Click(object sender, EventArgs e)
         {
-
             //se validan los datos, luego se guarda
             Reservation reservation = new Reservation();
             //reservation = getFormInfo();
@@ -76,16 +71,25 @@ namespace reservacion_sala_computo
 
             if (reservation.id_reservation != 0)
             {
-                
+
                 bool res = new ReservationLogic().EditReservation(reservation);
 
-        }
+                if (res)
+                {
+                    cleanForm();
+                    MessageBox.Show("Se ha guardado la edición.", "Éxito en la edición", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadInfo();
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al editar.", "Error en la edición", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
 
             }
-
         }
+
+
 
         private void loadInfo()
         {
@@ -103,10 +107,9 @@ namespace reservacion_sala_computo
             dgvReservations.Columns["hour_out"].HeaderText = "Hora de salida";
 
         }
-
         private void dgvReservations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             reservationID = int.Parse(dgvReservations.CurrentRow.Cells[0].Value.ToString());
             txtNumberDt.Text = dgvReservations.CurrentRow.Cells[1].Value.ToString();
             txtNameDt.Text = dgvReservations.CurrentRow.Cells[2].Value.ToString();
@@ -115,7 +118,6 @@ namespace reservacion_sala_computo
             dtpDateDt.Text = dgvReservations.CurrentRow.Cells[5].Value.ToString();
             dtpInDt.Text = dgvReservations.CurrentRow.Cells[6].Value.ToString();
             dtpOutDt.Text = dgvReservations.CurrentRow.Cells[7].Value.ToString();
-
         }
 
         private Reservation validation()
@@ -262,6 +264,6 @@ namespace reservacion_sala_computo
             }
 
         }
-
+        
     }
 }

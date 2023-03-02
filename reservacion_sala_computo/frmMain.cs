@@ -112,9 +112,6 @@ namespace reservacion_sala_computo
                     //intento de vaciar campos.
                     clean();
 
-
-
-
                 }
                 else
                 {
@@ -183,6 +180,17 @@ namespace reservacion_sala_computo
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void clean()
+        {
+            txtName.Text = "";
+            txtNumber.Text = "";
+            dtpIn.Value = DateTime.Now;
+            dtpOut.Value = DateTime.Now;
+            cbCareers.SelectedIndex = -1;
+            cbComputers.SelectedIndex = -1;
+            txtName.Focus();
         }
     }
 }

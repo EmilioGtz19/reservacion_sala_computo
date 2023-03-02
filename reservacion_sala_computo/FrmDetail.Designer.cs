@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnEditDt = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.dgvReservations = new System.Windows.Forms.DataGridView();
@@ -50,22 +50,18 @@
             this.lblTitleCareer = new System.Windows.Forms.Label();
             this.lblTitleNumber = new System.Windows.Forms.Label();
             this.lblTitleName = new System.Windows.Forms.Label();
-            this.lblTitleHourIn = new System.Windows.Forms.Label();
-            this.lblTitleHourOut = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservations)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnEdit
+            // btnEditDt
             // 
-            this.btnSaveEdit.Location = new System.Drawing.Point(253, 334);
-            this.btnSaveEdit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSaveEdit.Name = "btnSaveEdit";
-            this.btnSaveEdit.Size = new System.Drawing.Size(136, 28);
-            this.btnSaveEdit.TabIndex = 6;
-            this.btnSaveEdit.Text = "Guardar edición";
-            this.btnSaveEdit.UseVisualStyleBackColor = true;
-            this.btnSaveEdit.Click += new System.EventHandler(this.btnSaveEdit_Click);
+            this.btnEditDt.Location = new System.Drawing.Point(232, 334);
+            this.btnEditDt.Name = "btnEditDt";
+            this.btnEditDt.Size = new System.Drawing.Size(154, 28);
+            this.btnEditDt.TabIndex = 19;
+            this.btnEditDt.Text = "Guardar reservacion";
+            this.btnEditDt.Click += new System.EventHandler(this.btnEditDt_Click);
             // 
             // btnDelete
             // 
@@ -100,6 +96,7 @@
             this.dgvReservations.RowTemplate.Height = 24;
             this.dgvReservations.Size = new System.Drawing.Size(1027, 350);
             this.dgvReservations.TabIndex = 9;
+            this.dgvReservations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReservations_CellClick);
             // 
             // label1
             // 
@@ -127,7 +124,7 @@
             this.groupBox1.Controls.Add(this.lblTitleComputer);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.lblTitleCareer);
-            this.groupBox1.Controls.Add(this.btnEdit);
+            this.groupBox1.Controls.Add(this.btnEditDt);
             this.groupBox1.Controls.Add(this.lblTitleNumber);
             this.groupBox1.Controls.Add(this.lblTitleName);
             this.groupBox1.Location = new System.Drawing.Point(13, 28);
@@ -289,24 +286,6 @@
             this.lblTitleName.TabIndex = 0;
             this.lblTitleName.Text = "Nombre:";
             // 
-            // lblTitleHourIn
-            // 
-            this.lblTitleHourIn.AutoSize = true;
-            this.lblTitleHourIn.Location = new System.Drawing.Point(11, 220);
-            this.lblTitleHourIn.Name = "lblTitleHourIn";
-            this.lblTitleHourIn.Size = new System.Drawing.Size(108, 16);
-            this.lblTitleHourIn.TabIndex = 5;
-            this.lblTitleHourIn.Text = "Hora de entrada:";
-            // 
-            // lblTitleHourOut
-            // 
-            this.lblTitleHourOut.AutoSize = true;
-            this.lblTitleHourOut.Location = new System.Drawing.Point(20, 258);
-            this.lblTitleHourOut.Name = "lblTitleHourOut";
-            this.lblTitleHourOut.Size = new System.Drawing.Size(99, 16);
-            this.lblTitleHourOut.TabIndex = 6;
-            this.lblTitleHourOut.Text = "Hora de salida:";
-            // 
             // FrmDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -328,7 +307,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnEditDt;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.DataGridView dgvReservations;
