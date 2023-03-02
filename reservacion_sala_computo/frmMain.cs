@@ -109,12 +109,13 @@ namespace reservacion_sala_computo
                 if (res)
                 {
                     MessageBox.Show("Registro completado", "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //intento de vaciar campos.
+                    clean();
 
                 }
                 else
                 {
                     MessageBox.Show("Error al guardar en la base de datos", "Error base de datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
 
 
@@ -179,6 +180,17 @@ namespace reservacion_sala_computo
                 e.Handled = true;
                 return;
             }
+        }
+
+        private void clean()
+        {
+            txtName.Text = "";
+            txtNumber.Text = "";
+            dtpIn.Value = DateTime.Now;
+            dtpOut.Value = DateTime.Now;
+            cbCareers.SelectedIndex = -1;
+            cbComputers.SelectedIndex = -1;
+            txtName.Focus();
         }
     }
 }

@@ -108,7 +108,7 @@ namespace reservacion_sala_computo.Logic
                 string query = "UPDATE reservation set " +
                     "student_number = @student_number, " +
                     "student_name = @student_name, " +
-                    "note = @note" +
+                    "note = @note, " +
                     "day = @day, " +
                     "hour_in = @hour_in, " +
                     "hour_out = @hour_out, " +
@@ -139,7 +139,7 @@ namespace reservacion_sala_computo.Logic
             return res;
         }
 
-        public bool DeleteReservation(Reservation reservation)
+        public bool DeleteReservation(int reservation)
         {
             bool res = false;
             using (SQLiteConnection connection = new SQLiteConnection(conn))
@@ -149,7 +149,7 @@ namespace reservacion_sala_computo.Logic
                     "WHERE id_reservation = @id_reservation";
 
                 SQLiteCommand cmd = new SQLiteCommand(query, connection);
-                cmd.Parameters.Add(new SQLiteParameter("@id_reservation", reservation.id_reservation));
+                cmd.Parameters.Add(new SQLiteParameter("@id_reservation", reservation));
                 cmd.CommandType = System.Data.CommandType.Text;
 
                 if (cmd.ExecuteNonQuery() > 0)

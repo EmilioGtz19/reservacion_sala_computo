@@ -11,14 +11,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace reservacion_sala_computo
 {
     public partial class FrmDetail : Form
     {
+        bool validate = true;
+        string message;
+        int reservationID = 0;
         public FrmDetail()
         {
             InitializeComponent();
             loadInfo();
+            loadCb();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -27,46 +32,64 @@ namespace reservacion_sala_computo
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("¿Está seguro que quiere borrar la reservación?", "Confirmar eliminación", MessageBoxButtons.OKCancel,MessageBoxIcon.Warning);
-
+        {   
             
-            
-            Reservation reservationID = new Reservation();
-            reservationID.id_reservation = Int32.Parse(txtIdDt.Text);
-            bool res = new ReservationLogic().DeleteReservation(reservationID);
-
-            if (res)
+            if(reservationID != 0)
             {
-                cleanForm();
-                MessageBox.Show("Se ha eliminado la reservación.", "Éxito en la eliminación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                loadInfo();
+                DialogResult dialogResult = MessageBox.Show("¿Está seguro que quiere borrar la reservación?", "Confirmar eliminación", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if(dialogResult == DialogResult.OK)
+                {
+                    bool res = new ReservationLogic().DeleteReservation(reservationID);
+
+                    if (res)
+                    {
+                        cleanForm();
+                        MessageBox.Show("Se ha eliminado la reservación.", "Éxito en la eliminación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        loadInfo();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error al eliminar la reservación.", "Error en la eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
             }
             else
             {
-                MessageBox.Show("Hubo un error al eliminar la reservación.", "Error en la eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione una reservacion.", "Error en la eliminación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
 
-
         }
-        private void btnSaveEdit_Click(object sender, EventArgs e)
+        private void btnEditDt_Click(object sender, EventArgs e)
         {
-
             //se validan los datos, luego se guarda
-            Reservation reservation;
-            reservation = getFormInfo();
-            string error = validation(reservation);
+            Reservation reservation = new Reservation();
+            //reservation = getFormInfo();
+            reservation = validation();
 
-            if (error == "")
+            if (reservation.id_reservation != 0)
             {
+
                 bool res = new ReservationLogic().EditReservation(reservation);
 
+                if (res)
+                {
+                    cleanForm();
+                    MessageBox.Show("Se ha guardado la edición.", "Éxito en la edición", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadInfo();
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error al editar.", "Error en la edición", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+            }
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void loadInfo()
         {
@@ -84,10 +107,10 @@ namespace reservacion_sala_computo
             dgvReservations.Columns["hour_out"].HeaderText = "Hora de salida";
 
         }
-
         private void dgvReservations_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtIdDt.Text = dgvReservations.CurrentRow.Cells[0].Value.ToString();
+
+            reservationID = int.Parse(dgvReservations.CurrentRow.Cells[0].Value.ToString());
             txtNumberDt.Text = dgvReservations.CurrentRow.Cells[1].Value.ToString();
             txtNameDt.Text = dgvReservations.CurrentRow.Cells[2].Value.ToString();
             cbCareersDt.Text = dgvReservations.CurrentRow.Cells[3].Value.ToString();
@@ -95,85 +118,104 @@ namespace reservacion_sala_computo
             dtpDateDt.Text = dgvReservations.CurrentRow.Cells[5].Value.ToString();
             dtpInDt.Text = dgvReservations.CurrentRow.Cells[6].Value.ToString();
             dtpOutDt.Text = dgvReservations.CurrentRow.Cells[7].Value.ToString();
-
         }
 
-        private Reservation getFormInfo()
+        private Reservation validation()
         {
             Reservation reservation = new Reservation();
 
-            //aqui debe tambien ir las validaciones
-
-            reservation.id_reservation = int.Parse(txtIdDt.Text);
-            reservation.student_name = txtNameDt.Text;
-            reservation.student_number = int.Parse(txtNumberDt.Text);
-            reservation.id_career = int.Parse(cbCareersDt.SelectedIndex.ToString()) + 1;
-            reservation.id_computer = int.Parse(cbComputerDt.Text);
-            //reservation.note = 
-            reservation.day = dtpDateDt.Text;
-            reservation.hour_in = dtpInDt.Text;
-            reservation.hour_out = dtpOutDt.Text;
-
-            return reservation;
-        }
-
-
-        private string validation(Reservation reservation)
-        {
-
-            error = "";
-            validate = true;
-            int career = reservation.id_career;
-            int computer = reservation.id_computer;
-            string name = reservation.student_name;
-            string number = reservation.student_number.ToString();
-            string hourIn = reservation.hour_in;
-            string hourOut = reservation.hour_out;
-            //string date = reservation.day;
-
-
-            if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+            if (reservationID != 0)
             {
-                validate = false;
-                error += "Favor de llenar el campo nombre \n";
+                message = "";
+                validate = true;
+                int career;
+                int computer;
+                string name = txtNameDt.Text;
+                string number = txtNumberDt.Text;
+                string hourIn = dtpInDt.Text;
+                string hourOut = dtpOutDt.Text;
+                string date = dtpDateDt.Text;
+
+
+
+                if (string.IsNullOrEmpty(name) || string.IsNullOrWhiteSpace(name))
+                {
+                    validate = false;
+                    message += "Favor de llenar el campo nombre \n";
+                }
+
+                if (string.IsNullOrEmpty(number))
+                {
+                    validate = false;
+                    message += "Favor de llenar el campo matricula \n";
+                }
+
+                if (cbCareersDt.SelectedIndex == -1)
+                {
+                    validate = false;
+                    message += "Favor de llenar el campo carrera \n";
+                }
+                else
+                {
+                    career = int.Parse(cbCareersDt.SelectedIndex.ToString()) + 1;
+                    reservation.id_career = career;
+
+                }
+
+                if (cbComputerDt.SelectedIndex == -1)
+                {
+                    validate = false;
+                    message += "Favor de llenar el campo computadora \n";
+                }
+                else
+                {
+                    computer = int.Parse(cbComputerDt.SelectedIndex.ToString()) + 1;
+                    reservation.id_computer = computer;
+
+                }
+
+                if (DateTime.Parse(hourIn) < DateTime.Parse("08:00"))
+                {
+                    validate = false;
+                    message += "Seleccione hora de entrada valida \n";
+                }
+
+                if (DateTime.Parse(hourOut) > DateTime.Parse("20:00"))
+                {
+                    validate = false;
+                    message += "Seleccione hora de salida valida \n";
+                }
+
+                if (DateTime.Parse(hourIn) >= DateTime.Parse(hourOut))
+                {
+                    validate = false;
+                    message += "Seleccione un rango de hora valido \n";
+                }
+
+                if (!validate)
+                {
+                    MessageBox.Show(message, "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    reservation.id_reservation = reservationID;
+                    reservation.student_number = int.Parse(number);
+                    reservation.student_name = name;
+                    reservation.note = txtNoteDt.Text;
+                    reservation.day = dtpDateDt.Text;
+                    reservation.hour_in = hourIn;
+                    reservation.hour_out = hourOut;
+                }
+
+                return reservation;
+
             }
-
-            if (string.IsNullOrEmpty(number))
+            else
             {
-                validate = false;
-                error += "Favor de llenar el campo matricula \n";
-            }
-
-            if (cbCareersDt.SelectedIndex == -1)
-            {
-                validate = false;
-                error += "Favor de llenar el campo carrera \n";
-            }
-            if (cbComputerDt.SelectedIndex == -1)
-            {
-                validate = false;
-                error += "Favor de llenar el campo computadora \n";
+                MessageBox.Show("Seleccione una reservacion.", "Reservacion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return reservation;
             }
             
-            if (DateTime.Parse(hourIn) < DateTime.Parse("08:00"))
-            {
-                validate = false;
-                error += "Seleccione hora de entrada valida \n";
-            }
-
-            if (DateTime.Parse(hourOut) > DateTime.Parse("20:00"))
-            {
-                validate = false;
-                error += "Seleccione hora de salida valida \n";
-            }
-
-            if (DateTime.Parse(hourIn) >= DateTime.Parse(hourOut))
-            {
-                validate = false;
-                error += "Seleccione un rango de hora valido \n";
-            }
-
-            return error;
 
         }
 
@@ -222,5 +264,6 @@ namespace reservacion_sala_computo
             }
 
         }
+        
     }
 }
